@@ -66,10 +66,10 @@ jobs:
         with:
           java-version: 11
 
-      - name: SonarCloud Scan
-        run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        env:
-          GITHUB_TOKEN: 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
+#      - name: SonarCloud Scan
+#        run: ./gradlew app:sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+#        env:
+#          
 
   package:
     needs: [static-code-analysis]
