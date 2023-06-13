@@ -72,7 +72,6 @@ jobs:
 #          
 
   package:
-#    needs: [static-code-analysis]
     name: Generate APK
     runs-on: ubuntu-latest
     steps:
@@ -87,17 +86,14 @@ jobs:
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
 
-      - name: Upload APK
-        uses: actions/upload-artifact@v3
+      - name: Upload APK as artifact
+        uses: actions/upload-artifact@v2
         with:
-          name: expense-manager.apk
+          name: expense-manager-apk
           path: app/build/outputs/apk/debug/app-debug.apk
 
-      - name: Provide APK download link
-        run: echo "::set-output name=apk_link::https://example.com/path/to/app-debug.apk"
-
-      - name: Generate Download APK link
-        id: download_link
-        run: |
-          echo "::set-output name=download_link::https://example.com/path/to/app-debug.apk"
-          echo "Download APK link: https://example.com/path/to/app-debug.apk"
+      - name: Download APK from artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: expense-manager-apk
+          path: app-debug.apk
