@@ -90,10 +90,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: expense-manager-apk
-          path: app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
 
       - name: Download APK from artifact
         uses: actions/download-artifact@v3
         with:
           name: expense-manager-apk
-          path: app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
